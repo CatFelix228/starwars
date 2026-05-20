@@ -4,7 +4,7 @@ import { Circles } from "react-loader-spinner";
 import { useAppDispatch, useAppSelector } from "../../redux-hooks";
 import styles from "./entityPage.module.scss";
 import EntityPageComponent from "../../components/entityPageComponent/EntityPageComponent";
-import { RootStateKeys } from "../../store"; // Импортируйте тип состояния
+import { RootStateKeys } from "../../store";
 import { Entities } from "../../types";
 
 interface EntityPageProps<T> {
@@ -25,7 +25,7 @@ const EntityPage = <T extends Entities>({
 
   const status = useAppSelector((state) => state[entityName].selectedStatus);
   const entity = useAppSelector(
-    (state) => state[entityName]?.selectedEntity
+    (state) => state[entityName]?.selectedEntity,
   ) as T | null;
   const error = useAppSelector((state) => state[entityName].error);
 
@@ -46,9 +46,11 @@ const EntityPage = <T extends Entities>({
           visible={true}
         />
       )}
+
       {status === "error" && <h2>{error}</h2>}
+
       {status === "completed" && entity && (
-        <EntityPageComponent
+        <EntityPageComponent<T>
           entity={entity}
           titleKey={titleKey}
           fields={fields}

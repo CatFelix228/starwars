@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Entities, FilmType, LocalFilmType } from "../../types/entities";
+import { Entities, FilmType } from "../../types/entities";
 import { useAppDispatch, useAppSelector } from "../../redux-hooks";
 import { Circles } from "react-loader-spinner";
 
@@ -8,7 +8,7 @@ import Pagination from "../../components/ui/pagination/Pagination";
 import EntityCard from "../../components/ui/entityCard/EntityCard";
 import SearchInput from "../../components/ui/searchInput/SearchInput";
 
-type EntitiesWithoutFilms = Exclude<Entities, FilmType | LocalFilmType>;
+type EntitiesWithoutFilms = Exclude<Entities, FilmType>;
 
 interface EntityListPageProps<T extends EntitiesWithoutFilms> {
   fetchAllAction: (page: string) => any;
@@ -57,7 +57,12 @@ const EntitiesPage = <T extends EntitiesWithoutFilms>({
           <>
             <div className={styles.listWrapper}>
               {list.map((entity, index) => (
-                <EntityCard entity={entity} basePath={basePath} key={index} />
+                <EntityCard
+                  entity={entity}
+                  basePath={basePath}
+                  key={entity.url}
+                  index={index}
+                />
               ))}
             </div>
             <Pagination

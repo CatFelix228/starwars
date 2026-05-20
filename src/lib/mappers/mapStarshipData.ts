@@ -1,21 +1,28 @@
-import {  LocalStarshipType, StarshipType } from "../../types";
+import { LocalStarshipType, StarshipType } from "../../types";
 import { mapResources } from "./mapCharacterData";
 
-export const mapCharacterData = (starship: StarshipType): LocalStarshipType => {
-  if (!starship) return starship;
-
+export const mapStarshipData = (
+  starship: StarshipType
+): LocalStarshipType => {
   return {
     ...starship,
+
     films: mapResources(starship.films, "films"),
+    pilots: mapResources(starship.pilots, "characters"),
+
     residents: mapResources(starship.residents, "characters"),
-    starships: mapResources(starship.starships, "starships"), 
-    species: mapResources(starship.species, "starships"), 
+    species: mapResources(starship.species, "species"),
     vehicles: mapResources(starship.vehicles, "vehicles"),
-    characters: mapResources(starship.characters, "characters"), 
-    planets: mapResources(starship.starships, "starships"),
-    pilots: mapResources(starship.pilots, "pilots"),
+    characters: mapResources(starship.characters, "characters"),
+    planets: mapResources(starship.planets, "planets"),
+    starships: mapResources(starship.starships, "starships"),
     people: mapResources(starship.people, "people"),
-    homeworld: starship.homeworld ? { name: "", url: `/starships/${starship.homeworld.split("/").filter(Boolean).pop()}` } : undefined,
+
+    homeworld: starship.homeworld
+      ? {
+          name: "",
+          url: `/planets/${starship.homeworld.split("/").filter(Boolean).pop()}`,
+        }
+      : undefined,
   };
- };
- 
+};

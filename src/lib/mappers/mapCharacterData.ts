@@ -7,7 +7,6 @@ export const mapResources = (urls: string[] | undefined, type: string): LocalEnt
   })) || [];
 
 export const mapCharacterData = (character: CharacterType): LocalCharacterType => {
-  if (!character) return character;
 
   return {
     ...character,

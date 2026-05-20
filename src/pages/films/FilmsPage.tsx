@@ -49,10 +49,10 @@ const FilmsPage: React.FC = () => {
           {films?.map((film: FilmType) => {
             return (
               <SwiperSlide
-                key={film.episode_id}
+                key={film.properties?.episode_id}
                 style={{ display: "flex", justifyContent: "center" }}
               >
-                <FilmCard {...film} />
+                <FilmCard {...film.properties} />
               </SwiperSlide>
             );
           })}

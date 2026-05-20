@@ -10,14 +10,9 @@ const FilmPage: React.FC = () => {
       titleKey="title"
       fields={[
         { label: "Opening Crawl", key: "opening_crawl" },
-        { label: "Characters", key: "characters", isLink: true },
-        { label: "Planets", key: "planets", isLink: true },
-        { label: "Vehicles", key: "vehicles", isLink: true },
-        { label: "Species", key: "species", isLink: true },
-        { label: "Starships", key: "starships", isLink: true },
         { label: "Director", key: "director" },
         { label: "Producer", key: "producer" },
-        { label: "Year", key: "release_date" },
+        { label: "Release date", key: "release_date" },
       ]}
     />
   );
