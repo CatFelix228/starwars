@@ -31,9 +31,7 @@ function EntityPageComponent<T>({ entity, titleKey, fields }: EntityProps<T>) {
     const id = parts.at(-1);
     const type = parts.at(-2);
 
-    const routeType = type === "people" ? "characters" : type;
-
-    return `/${routeType}/${id}`;
+    return `/${type}/${id}`;
   };
 
   useEffect(() => {
